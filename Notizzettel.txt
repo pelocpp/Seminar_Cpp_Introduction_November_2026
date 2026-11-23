@@ -1,0 +1,373 @@
+// =======================================
+
+Seminar "C++ Einfühung"
+
+Peter Loos
+
+// =======================================
+
+Unterlagen:
+
+https://github.com/pelocpp
+
+https://github.com/pelocpp/cpp_introduction
+
+Tool:
+
+Visual Studio Community 2026 (for free)
+
+// =======================================
+
+Wie werden C++ Programme erstellt und wie laufen sie ab?
+
+a) Editor (Nicht: Word; Texteditor)
+
+   ==> Quelltext eingeben.
+
+b) Programmiersprache: natürliche Sprache:
+
+   Lexikon (Wörter)
+   Grammatik (Satz korrekt)
+
+   Beispiel:
+
+    #include <iostream>
+
+	void main()
+	{
+		std::cout << "Hallo Seminar";
+	}
+
+	Wörter:  void  main  { 123 ;  << :: 
+
+	Grammatik: 
+
+	Wie kann man die Grammatik überprüfen:  SW-Tool ( Compiler / Übersetzer )
+
+	Menü "Kompilieren"
+
+
+c) Ein lauffähiges Programm erzeugen.
+
+   Maschinencode // CPU 
+
+   Menü "Erstellen"
+
+   Wer macht das ?
+
+   2 Schritte:
+
+   i) Zu jeder Datei wird vom Compiler ein "quasi" Kompilat erstellt: 
+
+               Vorbereitetes Maschinenprogramm.
+
+			   Windows: .obj,  Linux:  .o
+
+			   Standardisiertes Format:  
+			      Common Object File Format (COFF; deutsch „allgemeines Objektdateiformat“) 
+
+	ii) Zweites Tool: Linker
+
+	    == hat alle .obj Dateien als Eingabe
+		== hat eine Datei (Windows: .exe, Linux: ohne Erweiterung) als Ausgabe
+
+d) Programm ausführen
+
+   Klick auf eine .exe Datei // executable
+
+Besonderheit:
+
+Wo fängt ein C++ Programm mit der Ausführung an:
+
+Mit einem Unterprogramm mit dem Namen 'main'
+
+=============================================
+
+Bemerkung:
+
+Was kann man mit C++ für "Programme" erstellen ???
+
+i) Programme:  .exe
+
+ii) Bibliotheken: .dll (dynamic link library) / Windows // 
+                  .so-Dateien (Shared Objects) // Linux
+
+=============================================
+
+Eigenschaften von C++:
+
+C++ ist eine format-freie Sprache
+
+=============================================
+
+Ein Programm "kontrolliert" ausführen: Debugger
+
+Bemerkung:
+
+Jede "Line of Code" sollte man EINMAL mit dem Debugger durchlaufen haben.
+
+Alternative:
+
+Logging
+
+=============================================
+
+Es gibt statische und dynamische Bibliotheken:
+
+a) Man schreibt ein C++ Programm.
+
+b) Dieses möchte eine Bibliothek verwenden.
+
+   Hier gibt es zwei Möglichkeiten:
+
+   i) Die Bibliothek wird - durch den Linker - in das .exe File 
+      mit eingebunden.
+
+	  => .exe ( Bibliothek im Bauch )
+
+	  Bibliothek ist Teil von dem .exe File
+
+	  Damit kann sie woanders so nicht verwendet werden.
+
+  ii) Die Bibliothek liegt - nach der Erstellung - in einem Verzeichnis auf der Festplatte
+
+      Sie kann - unter der Angabe des Pfads - durch ein anderes Programm
+	  geladen werden.  // Win32:   LoadLibrary
+
+	  Dann hat man den Zugriff auf Funktionen ( C - Funktionen ) in dieser Bibliothek.
+
+===================================================
+
+Beobachtung:
+
+Visual Code:  
+
+   C++ Programm ========>  Makefile
+
+Wer führt ein makefile aus:   Tool  : nmake / make / Cmake
+
+Ein Makefile ist eine Gebrauchsanweisung
+für ein C++-Projekt, das aus einer oder mehreren Quelldateien (main.cpp) besteht.
+
+Es kompiliert das Programm, unterstützt sauberes Aufräumen und ist leicht erweiterbar.
+
+Und es wird das Maschinenprogramm (.exe, .so) erstellt.
+
+===================================================
+
+Einbinden einer DLL:
+
+a) Die Dll muss auf irgend eine Weise dem Programm zugeordnet werden:
+
+   - zur Laufzeit: LoadLibrary (Win32)
+
+   - zur Übersetzungszeit: Im Makefile
+
+b) Bzgl. C: Ein Header-File
+
+   Hier wird die Schnittstelle der Funktion beschrieben (Parameter, Rückgabewert).
+
+c) Der Linker oder zur Laufzeit (LoadLibrary) müssen das .so
+   laden.
+
+===================================================
+===================================================
+
+Objekt:
+
+Hat Daten und Methoden
+
+Ein Objekt wird durch eine Klasse beschrieben:
+
+   Klasse : Beschreibung
+
+Daten: Werte   // statisches ....
+
+Methoden:  Greifen im Regelfall auf die Daten zu (Kontostand).
+
+         Führen Aktivitäten aus // Überprüfung  // dynamisches ...
+
+		 Können ein Ergebnis zurückliefern
+
+================================
+
+C++:
+
+Umsetzung in C++
+----------------
+
+Klasse:  2 Dateien
+
+== Header-File: Beschreibt das Aussehen (Daten und Methoden)
+
+== Implementierungs-Datei: 
+
+   Realisierung der Methoden
+
+== Verwendung einer Klasse: In einer dritten Datei:  
+
+   Im einfachsten Fall: Das Hauptprogramm.
+
+
+
+
+
+
+// Theoretisch: 1 Datei
+
+// C++:  Versionen :  C++ 98 // C++ 11 // C++ 20 / 23
+
+Eine Kleinigkeit:
+
+Ausgabe:  std::cout << 123;    // Klassisch
+          std::print ("123");  // Modern
+
+
+=================================================================
+
+Zu unserer eigenen Sicherheit:
+
+Das Programm mit dem Debugger durchlaufen.
+
+Haltepunkt: F9
+
+Go:         Gehe bis zum nächsten Haltepunkt:
+
+            i) F5
+			oder
+			ii) Pfeil "grün"
+
+Einzelschritt:
+
+			Eine Zeile
+
+			Aber:
+			eine einfache Anweisung
+			oder:
+			Aufruf eines Unterprogramms
+
+			F10 / F11  
+			bzw: 
+			blaue Pfeile
+
+
+===========================================================
+
+Konstruktoren
+
+Zugriffsschutz:  public / private
+
+
+===========================================================
+
+Features der OO:  
+
+Im Gegensatz zu C:
+
+Ein Objekt hat zu jedem Zeitpunkt gültige Daten!
+
+i) Im laufenden Betrieb: ===> setter
+
+ii) Erzeugungszeitpunkt: ===> Konstruktor  / konstruieren ein Objekt
+
+===========================================================
+
+Bemerkung:
+
+"Kleine Methoden"  : Einzeiler
+
+Könnte man im Header-File reinschreiben.
+
+===========================================================
+
+Topic: Lesbarkeit
+
+
+void Time::setSeconds(int seconds)
+{
+	if (s >= 0 && s < 60)
+	{
+		seconds = s;
+	}
+	else
+	{
+		std::cout << "Falscher Sekundenwert: " << s << std::endl;
+	}
+}
+
+===================================================================
+
+Wording im Umfeld OO:
+
+Klasse und Objekt
+
+Objekts == Instanz
+
+Variablen eines Objekts =========> Attribut, NICHT: Objektvariable, ABER: Instanzvariable, Member
+
+===================================================================
+
+Konstruktoren:
+
+Time::Time(int hours, int minutes, int seconds)
+{
+    // Instanzvariablen
+	m_hours = 0;
+	m_minutes = 0;
+	m_seconds = 0;
+
+	setHours(hours);
+	setMinutes(minutes);
+	setSeconds(seconds);
+}
+
+Redirecting of Constructor Calls
+
+===================================================================
+
+Element-Initialisierungsliste (Member Initializer List)
+
+Zwingend notwendig: Vererbung.
+
+
+===================================================================
+
+Klasse Account   // Bank Konto
+
+Attribute:
+
+int    Kontonummer;
+double Kontostand // balance;    123.50       123.555555
+
+// =================
+
+Kontostand:
+
+Euros --- int // 
+Cents --- int .. 0 .. 99
+
+Betrag // Amount
+
+=========================
+
+Methoden:
+
+Einzahlen:    to deposit  // Schnittstelle
+
+Abheben:      to withdraw
+
+bool withDraw (int amount)
+
+     return true;  // hat geklappt
+
+	 return false;  // hmm, der Betrag ist auf dem Konto nicht verfügbar
+
+Methode print:
+
+
+Kleines Programm, das 2 Konten anlegt mit Einzahlen und Auszahlen.
+
+
+
+
+
