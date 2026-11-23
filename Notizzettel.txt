@@ -367,7 +367,71 @@ Methode print:
 
 Kleines Programm, das 2 Konten anlegt mit Einzahlen und Auszahlen.
 
+========================================================================
+
+C / C++:
+
+Adressen (Pointer) / Referenzen
+
+A) Zeiger (Pointer)       ===> C 
+
+B) Referenzen (Reference) ===> C++
+
+========================================================================
+
+White Space 
+
+Blank / Tabulator / New Line
+
+========================================================================
+
+0x00000009E71AF454  e7 03 00 00 cc cc cc cc  ç...ÌÌÌÌ
+0x00000009E71AF45C  cc cc cc cc cc cc cc cc  ÌÌÌÌÌÌÌÌ
+0x00000009E71AF464  cc cc cc cc cc cc cc cc  ÌÌÌÌÌÌÌÌ
+0x00000009E71AF46C  cc cc cc cc cc cc cc cc  ÌÌÌÌÌÌÌÌ
+0x00000009E71AF474  cc cc cc cc 54 f4 1a e7  ÌÌÌÌTô.ç
+0x00000009E71AF47C  09 00 00 00 cc cc cc cc  ....ÌÌÌÌ
+
+0x00000009e71af454
+
+   54 f4 1a e7 09 00 00 00  ===> (umdrehen):  00 00 00 09 e7 1a f4 54
+                                            0x00 00 00 09 e7 1a f4 54
+
+===============================================================
+
+Welche Bedeutung haben Adressen:
+
+Man kann in einem C/C++ Programm zur Laufzeit Speicher anfordern / reservieren:
+
+malloc / new  ========> eine Adresse
+
+===============
+
+0x0000003FD1AFFBD4  e7 03 00 00 cc cc cc cc  ç...ÌÌÌÌ  n   // 999 // 456
+0x0000003FD1AFFBDC  cc cc cc cc cc cc cc cc  ÌÌÌÌÌÌÌÌ
+0x0000003FD1AFFBE4  cc cc cc cc cc cc cc cc  ÌÌÌÌÌÌÌÌ
+0x0000003FD1AFFBEC  cc cc cc cc cc cc cc cc  ÌÌÌÌÌÌÌÌ
+0x0000003FD1AFFBF4  cc cc cc cc d4 fb af d1  ÌÌÌÌÔû¯Ñ   ptr
+0x0000003FD1AFFBFC  3f 00 00 00 cc cc cc cc  ?...ÌÌÌÌ
 
 
+0x0000003FD1AFFBD4  e7
+0x0000003FD1AFFBD5  03
+0x0000003FD1AFFBD6  00
+0x0000003FD1AFFBD7  00
+
+0x0000003FD1AFFBD8  00
+
+
+=================================================================
+
+Dienstag:
+
+== Pointer (Montag)
+== Referenz               Whyyyyyyyyyyyyyyyyyyyyy
+
+== Übergabe von Objekten an Unterprogramme
+
+== Überladen von Operatoren
 
 

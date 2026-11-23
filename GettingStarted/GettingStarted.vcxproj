@@ -143,7 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HelloWorld.cpp" />
+    <ClCompile Include="Pointer_Referenzen.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Program_Time.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>

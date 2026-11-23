@@ -24,6 +24,12 @@
     <ClCompile Include="Time.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Program_Time.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Pointer_Referenzen.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
     <ClCompile Include="Program.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
