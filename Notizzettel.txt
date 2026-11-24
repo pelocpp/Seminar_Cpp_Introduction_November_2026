@@ -778,14 +778,7 @@ Satz:
 
 
 
+	Vererbung: Das einführende Regelwerk:  Konstruktoren // Erben von Attributen
 
-
-
-
-
-
-
-
-
-
+	Fortgeschrittenes: Kür: Erben / Überschreiben von Methoden
 
