@@ -2,7 +2,7 @@
 
 #include "Time.h"
 
-int main_time() {
+void test_time() {
 
 	std::cout << "Hallo Seminar\n";
 
@@ -34,5 +34,19 @@ int main_time() {
 
 	pause.print();
 
-	return 0;
+	// Geht: Methodenschreibweise
+	if (now.equals(pause)) {   // Operatoren Schreibweise 
+	}
+
+	if (now == pause) {   // Operatoren Schreibweise 
+	}
+
+	// Etwas Spielerei:
+	//if (now.operator==  (pause) ) { 
+	//}
+
+
+	// Etwas Spielerei:
+	if (operator== (now, pause) == true) { 
+	}
 }

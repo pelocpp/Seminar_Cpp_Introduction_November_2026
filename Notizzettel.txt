@@ -18,6 +18,50 @@ Visual Studio Community 2026 (for free)
 
 // =======================================
 
+== Dynamische Variablen
+
+== Rule of Three: Kopierkonstruktor, Wertzuweisungsoperator und Destruktor
+
+== Vererbung
+
+== Smart Pointer: Shared_Ptr // Weak_Ptr
+
+== Template
+
+== STL: STL-Container, STL-Iterator, STL-Algorithmus, Callable
+
+== Kurz: Lambdas
+
+== Iteratoren / Geschachtelte Maps / ...
+
+== std::variant // std::any
+
+== Überladen von Operatoren: std::variant
+
+== Preprozessor - Makros // constexpr
+
+== Header-Only // inline 
+
+   Hmmm: Eher nein
+
+== Brace Initialization
+
+   int i(3);   // alt //
+
+   int i = 3;  // alt
+
+   int i{ 3 }; // Neu: Whyyyyyy
+
+== auto : Best Practice
+
+== C-Array vs. std::array
+
+== Wie liest man einen Core Dump ?????????????
+
+   Sanitizer
+
+// =======================================
+
 Wie werden C++ Programme erstellt und wie laufen sie ab?
 
 a) Editor (Nicht: Word; Texteditor)
@@ -433,5 +477,315 @@ Dienstag:
 == Übergabe von Objekten an Unterprogramme
 
 == Überladen von Operatoren
+
+=================================================================
+
+Pointer / Adresse:   C
+
+Referenz:            C++
+
+Whyyyyyyyyyyyyyy
+
+=================================================================
+
+Übergabe von Parametern
+-----------------------
+
+Mehrere Mechanismen
+
+ALLEN Mechanismen ist gemeinsam: 
+
+Ein Stack Frame // Micro Computer Programmierung
+
+Unterschiede:
+
+A) Call-by-Copy // Call-by-Value
+
+Standard in C/C++
+
+   ===> Übergabe einer Kopie
+   
+B) Call-by-Address: Fortran / C / C++
+
+   ===> Übergabe einer Adresse
+
+C) Call-by-Referenz:  C++
+
+   ===> Übergabe einer Referenz (Original)
+  
+Fazit:
+
+Kleine Werte ====> Kopie tut es
+
+      Ausnahme: Will das Original verändern : Dann brauche ich doch die Adresse
+
+	            C oder C++ Stilistik : Pointer oder Referenz: Bessere Lesbarkeit: Referenz
+
+Große Werte ===> Referenz ist besser, weil keine teure Kopie erstellt wird.
+
+Nebenbemerkung:
+
+Adressen / Pointer haben dennoch eine Bedeutung in C++:
+
+'new' liefert eine Adresse zurück.
+
+================================================
+
+https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/Architecture/Architecture_Comparison.md
+
+Wertsemantik versus Referenzsemantik
+
+================================================
+
+
+Vergleich:
+
+	int tmp = n;
+00007FF7B0CD25CF  mov         eax,dword ptr [n]  
+00007FF7B0CD25D5  mov         dword ptr [tmp],eax  
+
+	int tmp = *ptr;
+00007FF78E9A2620  mov         rax,qword ptr [ptr]  
+00007FF78E9A2627  mov         eax,dword ptr [rax]  
+00007FF78E9A2629  mov         dword ptr [tmp],eax  
+
+	int tmp = ri;
+00007FF78E9A1DA0  mov         rax,qword ptr [ri]  
+00007FF78E9A1DA7  mov         eax,dword ptr [rax]  
+00007FF78E9A1DA9  mov         dword ptr [tmp],eax  
+
+
+Zweiter Vergleich mit Time Objekt:
+
+t = Value
+
+	Time tmp = t;
+00007FF7BC0E26FB  lea         rax,[tmp]  
+00007FF7BC0E26FF  mov         rdi,rax  
+00007FF7BC0E2702  mov         rsi,qword ptr [&t]  
+00007FF7BC0E2709  mov         ecx,0Ch  == 12
+00007FF7BC0E270E  rep movs    byte ptr [rdi],byte ptr [rsi]  
+
+t = Referenz
+
+	Time tmp = t;
+00007FF7BC0E27CB  lea         rax,[tmp]  
+00007FF7BC0E27CF  mov         rdi,rax  
+00007FF7BC0E27D2  mov         rsi,qword ptr [t]  
+00007FF7BC0E27D9  mov         ecx,0Ch  = 12
+00007FF7BC0E27DE  rep movs    byte ptr [rdi],byte ptr [rsi]  
+
+
+=====================================================
+
+const für Parameter
+
+const für Methoden
+
+=====================================================
+
+Überladen von Operatoren
+------------------------
+
+How: Sehr einfach:
+
+A) Erste Variante
+
+Wie das implementieren einer Methode:
+
+Name der Methode:  operator ==
+
+Beispiel:
+
+Time now (10, 56, 0);
+
+Time pause (12, 30, 0);
+
+if (now ist gleich pause) {   // Kein C++
+}
+
+if (now . equals ( pause ) ) {   // Methoden Schreibweise 
+}
+
+if (now == pause ) {   // Operatoren Schreibweise 
+}
+
+
+B) Zweite Variante
+
+Anwendung: Man ist nicht der Entwickler der betroffenen Klasse.
+Die betroffene Klasse ist eine Zulieferung.
+
+Als globale (freie) Funktion
+
+1. Bemerkung:
+Man geht in diesem Fall über die "öffentliche Schnittstelle"
+
+2. Bemerkung:
+Man kann in einer Klasse eine "Freundschaft" ausprechen:
+
+Aus private wird für "Freunde" public:
+
+
+=====================================================
+=====================================================
+
+Speicherbereiche eines C++–Programms:
+
+A) Globale Variablen
+
+i) Überall
+
+SYNTAX:
+int counter = 100;
+
+oder:
+
+ii) Nur in einer Datei
+
+SYNTAX:
+static int counter = 100;
+
+Bemerkung:
+Mit static hat man ein "Modul-Konzept für Arme":
+
+Was ist ein Modul aus diesem Blickwinkel:
+Alles, was in EINER Datei steht (Variablen, Funktionen, Objekte)
+UND mit static markiert ist.
+
+
+oder:
+
+iii) Nur in einer Funktion / Methode
+
+
+
+// =======================================
+
+Klasse Account
+
+Operatoren überladen:
+
+operator ==   ==> Kontostand ist gleich 
+
+operator <, <= , > , >=
+
+Entscheidung: Operatorenn in / außerhalb der Klasse 
+
+// getter  =======> const
+
+getBalance
+getAccountNumber
+
+=========================================
+
+C++  =========> Operatoren
+
+Schnittstelle, um einen Container zu durchlaufen / iterieren:
+
+interface IEnumerable
+
+== reset()
+== hasNext()
+== Current()
+
+C++:
+
+== operator++   // Vergleich: container.end()
+== operator==   // container.end()
+== operator*    // Wert von /// Current
+
+Muss mir keine Namen von Methoden merken ....
+
+operator+ 
+
+===============================================================
+
+Speicherbereiche:
+-----------------
+
+Global:
+
+Lokal: Zwischenergebnisse
+
+        mit return; aus einem Unterprogramm.
+
+
+Dynamisch: new / delete  ========> Wer ist der Besitzer / Owner
+
+Suche nach fehlenden deletes:  Death March / Ed Yourdon
+
+
+===============================================================
+
+int zahlen [10];
+
+int n;
+// .......
+n zur Laufzeit berechnen: 10, 100, 1000
+
+int zahlen [n];  // NEIN! !!!!!!!!!!!!!!!!!
+
+===============================================================
+===============================================================
+
+Wann setzen wir Vererbung ein ?????????????????????????
+
+
+Klasse Rechteck / Rectangle
+
+Klasse FarbigesRechteck / ColoredRectangle
+
+Satz:
+
+"Das Rechteck ist der Überbegriff eines farbiges Rechtecks".
+
+"Ein farbiges Rechteck ist ein Rechteck"
+
+Beziehungen / Relationship:   ist-ein  //   is-a Relation
+
+Haben wir die  ist-ein Beziehung vorliegen =========> Vererbung
+
+Kontrollfrage:
+--------------
+
+Klasse Linie // class Line
+
+Klasse Punkt // class Point
+
+Satz:
+
+== Ein Punkt ist keine Linie
+== Eine Linie ist kein Punkt
+
+== Eine Linie besteht aus vielen Punkten
+
+== Eine Linie besteht aus zwei Punkten // Anfang / Ende
+
+== Eine Linie hat zwei Punkte // Anfang / Ende
+
+   has-a Relationship:
+
+   class Line
+   {
+   public:
+       Point m_begin;
+	   Point m_end;
+	   ...
+	   int*  m_irgendwas;
+
+	Fazit:  class Line extends Point
+
+
+
+
+
+
+
+
+
+
+
+
 
 

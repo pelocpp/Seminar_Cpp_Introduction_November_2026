@@ -15,6 +15,8 @@
 
 class Time
 {
+	friend bool operator== (const Time& left, const Time& right);
+
 private:  // data  // m ... member
 	int m_hours;
 	int m_minutes;
@@ -27,20 +29,36 @@ public:
 	Time();
 	Time(int hours, int minutes, int seconds);
 
+	~Time();
+
 	// getter
 //	int getHours() { return hours; }
 
-	int getHours();
-	int getMinutes();
-	int getSeconds();
+	// Vorsichtsmaßnahme: lesender Zugriff
+
+	int getHours() const;
+	int getMinutes() const;
+	int getSeconds() const;
 
 	// setter
 	void setHours(int);
 	void setMinutes(int);
 	void setSeconds(int seconds);
 
-	void print();
+	void print() const;
 	void reset();
 	void increment();  // eine Sekunde dazu zählen 
+
+	// Vergleiche / Comparison
+	bool equals( const Time& other ) const;
+	bool unequals(const Time& other) const;
+
+	// Operators
+	// bool operator== (const Time& other) const;
 };
+
+// ================================================
+// Außerhalb der Klasse
+
+// bool operator== (const Time& left, const Time& right);
 

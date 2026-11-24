@@ -27,10 +27,19 @@
     <ClCompile Include="Program_Time.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Pointer_Referenzen.cpp">
+    <ClCompile Include="01_Pointer_Referenzen.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="02_Speicherbereiche.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="03_Dynamic_Memory.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="04_Vererbung.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,5 +47,16 @@
     <ClInclude Include="Time.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\01_Memory.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="..\02_Call-by_Copy.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="..\03_Call-by_Referenz.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
   </ItemGroup>
 </Project>

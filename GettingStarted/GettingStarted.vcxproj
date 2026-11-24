@@ -142,14 +142,22 @@
     <Text Include="..\Notizzettel.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="02_Speicherbereiche.cpp" />
+    <ClCompile Include="03_Dynamic_Memory.cpp" />
+    <ClCompile Include="04_Vererbung.cpp" />
     <ClCompile Include="HelloWorld.cpp" />
-    <ClCompile Include="Pointer_Referenzen.cpp" />
+    <ClCompile Include="01_Pointer_Referenzen.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Program_Time.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\01_Memory.png" />
+    <Image Include="..\02_Call-by_Copy.png" />
+    <Image Include="..\03_Call-by_Referenz.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
