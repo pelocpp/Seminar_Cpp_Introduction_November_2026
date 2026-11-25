@@ -2,7 +2,7 @@
 
 #include "Time.h"
 
-void test_time() {
+void main_time() {
 
 	std::cout << "Hallo Seminar\n";
 

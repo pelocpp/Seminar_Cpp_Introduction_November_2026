@@ -140,15 +140,10 @@ void test_references_pointer_04()
 	std::cout << x << std::endl;
 }
 
-void test_references_pointer()
+void main_references_pointer()
 {
 	 //test_references_pointer_01();
 	 //test_references_pointer_02();
 	 test_references_pointer_03();
 	 //test_references_pointer_04();
 }
-
-
-
-
-

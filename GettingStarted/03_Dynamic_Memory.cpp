@@ -57,8 +57,7 @@ void test_dynamic_memory_02()
 }
 
 
-
-void test_dynamic_memory()
+void main_dynamic_memory()
 {
 	test_dynamic_memory_02();
 }

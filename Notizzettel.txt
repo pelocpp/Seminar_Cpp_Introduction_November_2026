@@ -18,6 +18,21 @@ Visual Studio Community 2026 (for free)
 
 // =======================================
 
+C++:  
+
+    Bjarne Stroustrup
+	
+	Keine Bibliothek:
+
+Templates: Alexander Alexandrowitsch Stepanow 
+
+           Generische Programmierung
+
+
+
+
+// =======================================
+
 == Dynamische Variablen
 
 == Rule of Three: Kopierkonstruktor, Wertzuweisungsoperator und Destruktor
@@ -778,7 +793,208 @@ Satz:
 
 
 
-	Vererbung: Das einführende Regelwerk:  Konstruktoren // Erben von Attributen
+Vererbung: Das einführende Regelwerk:  Konstruktoren // Erben von Attributen
 
-	Fortgeschrittenes: Kür: Erben / Überschreiben von Methoden
+Fortgeschrittenes: Kür: Erben / Überschreiben von Methoden
+
+==============================================================
+
+2. Beispiel:  Real-World Beispiel
+
+virtual:
+
+Einmal virtual, immer virtual
+
+Bei jeder virtuellen Methode:
+
+A) virtual
+
+oder
+
+B) (virtual) override
+
+
+==============================================================
+
+Vererbung:  
+
+virtual:     Größeren Scope // Mehr Optionen
+
+A) Kindklasse überschreibt Methode der Vaterklasse nicht !!!
+
+   ==> Die Kindklasse erbt die Methode der Vaterklasse
+
+B) Kindklasse überschreibt Methode der Vaterklasse,
+   KEIN Aufruf der Basisklassenmethode
+
+   ==> Die Kindklasse ersetzt die Methode der Vaterklasse
+
+   ==> Kann fragwürdig sein.
+
+C) Kindklasse überschreibt Methode der Vaterklasse,
+   es ist ein Aufruf der Basisklassenmethode vorhanden
+
+   ==> Die Kindklasse erweitert die Methode der Vaterklasse
+
+A) oder C) : Perfekt
+
+=============================================================
+
+3 besondere Namen:
+
+== Polymorphismus
+== Interface // Schnittstelle
+== Abstrakte Basisklasse
+
+Abstrakte Basisklasse
+
+a) Ist eine unvollständige Klasse mit einer hilfreichen Teilimplementierung,
+   die von allen Kindklassen verwendet wird.
+
+b) Kann / sollte Member Variablen haben, die von allen Kindklassen benötigt werden.
+
+   Rechteck:  x,y - width, height
+              NICHT: Farbe, Grauschattierung
+
+c) Hat eine oder mehrere Methoden OHNE Realisierung.  print // toString
+
+d) Kann sehr wohl Verträge mit einer oder mehreren Schnittstellen eingehen
+   Dies bedeutet NICHT, dass eine Realisierung vorhanden sein muss.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    void print() override {
+		std::cout << "ColoredRectangle" << std::endl;
+
+		// this / super
+		Rectangle::print();
+	}
+
+
+
+
+Bemerkung:
+
+überschreiben ==> overwrite   // override
+
+
+
+================================================
+
+STL:
+
+std::vector
+
+Bei Neu-ALlokation gilt:  
+
+Neuer intern verfügbarer Speichplatz: == Alter intern verfügbarer Speichplatz * 1.5
+
+Man könnte / kann operator[] auch für Linked List implementieren:
+
+===> Performanz:   O(n) Notation.
+
+Design Ziel:    Performanz
+
+
+STL-Container  <===> Zugriff auf den Container:  Eng gekoppelt :: Problematisch 
+
+Konzept:
+
+STL-Container   <===> STL Iterators <===> Zugriff
+
+============================================================
+
+Was ist ein STL Iterator ???
+
+Beschreibt eine Position.
+
+Was kann man mit dieser Position machen:
+
+== Vergleichen
+== Den Wert hinter der Position sich geben lassen
+== Gehe zur nächsten Position
+
+C# / Java (ca.)
+
+== equals
+== Current / ValueOf
+== Next
+
+C++:
+
+STL-Definition:
+
+operator ==
+operator *
+operator ++
+
+Frage: Wie bekomme ich einen Iterator.
+
+std::vector
+std::list
+std::map
+
+
+// Ginge ..............
+std::vector_iterator
+std::list_iterator
+std::map_iterator
+
+// Container:
+std::vector
+std::list
+std::map
+
+Die Typen für Iteratoren werden von der jeweiligen Container Klasse mitgebracht !?!?!?!!ß
+
+std::vector<T>::iterator
+std::list<T>::iterator
+std::map<T>::iterator
+
+Wie bekommt man nun eine konkrete Position:
+
+STL-Definition:
+
+Jeder STL-Container muss 2 Methoden besitzen:
+
+begin():   Position des ersten Elements
+end():     Position des letzen Elements (die Position NACH dem letzen Element)
+
+
+
+STL-Container
+
+STL-Iteratoren
+
+STL-Algorithmen
+
+
+STL-Container <==> STL-Iteratoren <===> STL-Algorithmen
+
+
+
+std::find: Suchen
+
+std::find (vec);   // falsch
+
+// A) Container
+std::vector<int> vec{ 1, 2, 3, 5, 6, 7 };
+
+// B) Algorithmus: Suchen
+
+std::find (
+   vec.begin(),
+   vec.end(),
+   123
+   );
 
