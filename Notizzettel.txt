@@ -29,23 +29,22 @@ Templates: Alexander Alexandrowitsch Stepanow
            Generische Programmierung
 
 
-
-
 // =======================================
 
-== Dynamische Variablen
+== Dynamische Variablen:  Jepp
 
 == Rule of Three: Kopierkonstruktor, Wertzuweisungsoperator und Destruktor
 
-== Vererbung
+== Vererbung:  Jepp
 
 == Smart Pointer: Shared_Ptr // Weak_Ptr
 
-== Template
+== Template:  Jepp
 
-== STL: STL-Container, STL-Iterator, STL-Algorithmus, Callable
+== STL: STL-Container, STL-Iterator, STL-Algorithmus, Callable:  Jepp
 
-== Kurz: Lambdas
+== Kurz: auto & 
+Lambdas
 
 == Iteratoren / Geschachtelte Maps / ...
 
@@ -972,11 +971,11 @@ end():     Position des letzen Elements (die Position NACH dem letzen Element)
 
 
 
-STL-Container
+1.) STL-Container
 
-STL-Iteratoren
+2.) STL-Iteratoren
 
-STL-Algorithmen
+3.) STL-Algorithmen:    Suchen, Durchlaufen, Kopieren, Vorbelegen, Transformieren, ....
 
 
 STL-Container <==> STL-Iteratoren <===> STL-Algorithmen
@@ -997,4 +996,124 @@ std::find (
    vec.end(),
    123
    );
+
+Normalerweise:
+
+f	-	function object, to be applied to the elements
+
+
+// C++ 98
+i)   Freie Funktion
+ii)  Aufrufbares Objekt  // Callable  (OO / Zugriff auf Attribute)
+
+// C++ 11
+iii) Lambda
+
+// =======================================
+
+
+auto:
+
+https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/Auto/Auto.md
+
+=============
+
+    auto sum4(int f1, int f2)   
+    {
+00007FF609320460  mov         dword ptr [rsp+10h],edx  
+00007FF609320464  mov         dword ptr [rsp+8],ecx  
+00007FF609320468  push        rbp  
+00007FF609320469  push        rdi  
+00007FF60932046A  sub         rsp,0E8h  
+00007FF609320471  lea         rbp,[rsp+20h]  
+00007FF609320476  lea         rcx,[__395E4D52_08_auto@cpp (07FF62909B43Eh)]  
+00007FF60932047D  call        __CheckForDebuggerJustMyCode (07FF6092C8E92h)  
+00007FF609320482  nop  
+        return f1 + f2;
+00007FF609320483  mov         eax,dword ptr [f2]  
+00007FF609320489  mov         ecx,dword ptr [f1]  
+00007FF60932048F  add         ecx,eax  
+00007FF609320491  mov         eax,ecx  
+    }
+
+    auto sum3(short f1, short f2)    // Why int ???????????????????
+    {
+00007FF753AA0460  mov         word ptr [rsp+10h],dx  
+00007FF753AA0465  mov         word ptr [rsp+8],cx  
+00007FF753AA046A  push        rbp  
+00007FF753AA046B  push        rdi  
+00007FF753AA046C  sub         rsp,0E8h  
+00007FF753AA0473  lea         rbp,[rsp+20h]  
+00007FF753AA0478  lea         rcx,[__395E4D52_08_auto@cpp (07FF77381B43Eh)]  
+00007FF753AA047F  call        __CheckForDebuggerJustMyCode (07FF753A48E92h)  
+00007FF753AA0484  nop  
+        return f1 + f2;
+00007FF753AA0485  movsx       eax,word ptr [f1]  
+00007FF753AA048C  movsx       ecx,word ptr [f2]  
+00007FF753AA0493  add         eax,ecx  
+    }
+
+
+Arithmetik:
+
+float
+double
+int
+
+NO: short             short ===> int:  +, -,   ===> int : Abschneiden: short
+
+======================================================
+
+Wozu  auto als Rückgabetyp:
+
+Beispiele: Lambdas: Da habe ich keinen Typ.
+
+=======================================
+
+Verlust von const und & (Referenz) bei auto
+
+=======================================
+
+auto:
+
+A) Vereinbarung von Variablen
+
+B) Rückgabetyp
+
+C) Für Parameter (C++ 20)
+
+=====================================
+
+std::array
+
+C:
+
+int zahlen [10];
+
+C++:   Best Practice:
+
+std::array
+std::span
+
+std::array <int, 10>  zahlen;
+
+Funkionell: Fixed-Size Array: Identisch !!!
+
+ABER:
+
+std::array<int, 5>   Problem der Übergabe als Parameter: Wegen der Länge
+
+Lösung:
+
+Neuer Datentyp:    std::span   Was ist das ????????????????
+
+
+Mini-Klasse: Für eine Anfangsadresse // plus Länge
+
+
+
+
+
+
+
 

@@ -48,12 +48,27 @@
     <ClCompile Include="06_Schablonen.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="07_STL_Performance.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="08_auto.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="09_auto_als_Parameter.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="10_std_array.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Globals.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ScopedTimer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -7,6 +7,6 @@
 
 int main()
 {
-	main_stl();
+	main_array();
 	return 0;
 }

@@ -12,3 +12,7 @@ extern void main_dynamic_memory();
 extern void main_vererbung();
 extern void main_stl();
 extern void main_templates();
+extern void main_algorithms();
+extern void main_auto();
+extern void main_generic_functions();
+extern void main_array();

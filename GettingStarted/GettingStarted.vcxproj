@@ -128,7 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,6 +147,10 @@
     <ClCompile Include="04_Vererbung.cpp" />
     <ClCompile Include="05_STL.cpp" />
     <ClCompile Include="06_Schablonen.cpp" />
+    <ClCompile Include="07_STL_Performance.cpp" />
+    <ClCompile Include="08_auto.cpp" />
+    <ClCompile Include="09_auto_als_Parameter.cpp" />
+    <ClCompile Include="10_std_array.cpp" />
     <ClCompile Include="HelloWorld.cpp" />
     <ClCompile Include="01_Pointer_Referenzen.cpp" />
     <ClCompile Include="Program.cpp" />
@@ -155,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="ScopedTimer.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
