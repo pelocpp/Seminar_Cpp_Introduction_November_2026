@@ -72,6 +72,15 @@
     <ClCompile Include="14_MoveSemantics_Example.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="15_Lambdas.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="16_Brace_Initialization.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="17_Unique_Ptr.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h">

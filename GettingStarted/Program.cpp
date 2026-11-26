@@ -7,6 +7,6 @@
 
 int main()
 {
-	exercises_move_semantics();
+	main_unique_ptr();
 	return 0;
 }

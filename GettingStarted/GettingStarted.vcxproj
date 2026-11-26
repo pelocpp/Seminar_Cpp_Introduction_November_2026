@@ -155,6 +155,9 @@
     <ClCompile Include="12_RValue.cpp" />
     <ClCompile Include="13_MoveSemantics.cpp" />
     <ClCompile Include="14_MoveSemantics_Example.cpp" />
+    <ClCompile Include="15_Lambdas.cpp" />
+    <ClCompile Include="16_Brace_Initialization.cpp" />
+    <ClCompile Include="17_Unique_Ptr.cpp" />
     <ClCompile Include="HelloWorld.cpp" />
     <ClCompile Include="01_Pointer_Referenzen.cpp" />
     <ClCompile Include="Program.cpp" />

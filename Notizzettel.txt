@@ -33,11 +33,11 @@ Templates:
 
 // =======================================
 
-== Rule of Three: Kopierkonstruktor, Wertzuweisungsoperator und Destruktor
+== Rule of Three: Kopierkonstruktor, Wertzuweisungsoperator und Destruktor: Jepp
 
-== Verschiebe-Semantik (std::move)
+== Verschiebe-Semantik (std::move): Jepp
 
-== Lambdas
+== Lambdas: Jepp
 
 == Smart Pointer: Shared_Ptr // Weak_Ptr
 
@@ -51,7 +51,7 @@ Templates:
 
 == Preprozessor - Makros // constexpr
 
-== Brace Initialization
+== Brace Initialization: Jepp
 
    int i(3);   // alt //
 
@@ -62,6 +62,9 @@ Templates:
 == Wie liest man einen Core Dump ?????????????
 
    Sanitizer
+
+== std::initializer_list // Wenn die Zeit reicht ...
+
 
 // =======================================
 
@@ -1171,4 +1174,94 @@ Modern C++:
         // move semantics
         BigData(BigData&&) noexcept;              // move c'tor
         BigData& operator= (BigData&&) noexcept;  // move assignment
+
+========================================================================
+
+Lambda:
+
+Kurz und bündig:
+
+Ein Lambda ist eine kleine anonyme Funktion.
+
+Exakt:
+
+Ein Lambda ist ein Objekt !!!!!!!!!!!!!!!!!!!!   Von welcher Klasse ???
+ 
+class Time{};
+
+Time now;
+
+SYNTAX:
+
+            [] (int n) { 
+                std::print("{} ", n);
+            }
+
+Von welcher Klasse ???   
+
+a) Ist vor uns / dem Programmersteller verborgen.
+
+b) Tools: Cpp Insights
+
+Converter:
+
+Modern C++ ===> Classic C++
+
+============================================================
+
+Forrest Gump goes C++
+
+        int intArray7[10]{};
+00007FF65D25A189  lea         rax,[intArray7]  
+00007FF65D25A190  mov         rdi,rax  
+00007FF65D25A193  xor         eax,eax  
+00007FF65D25A195  mov         ecx,28h  // 28h = 40 dez = 10 * 4:  ===> 10 int's
+00007FF65D25A19A  rep stos    byte ptr [rdi]  
+
+
+rep: Repeat
+
+
+================================================================
+
+
+Brace Init:
+
+Vorsicht: 
+
+std::vector<int> vec { 10 };  - Size: 1 - Wert: 10
+
+std::vector<int> vec ( 10 );  - Size: 10 - 10 Werte: 0
+
+================================================================
+
+
+        double d1 = ival;      // Compiles
+00007FF7CD738FA0  cvtsi2sd    xmm0,dword ptr [ival]  
+00007FF7CD738FA5  movsd       mmword ptr [d1],xmm0  
+        
+
+cvtsi2sd:
+
+CVTSI2SD — Convert Doubleword Integer to Scalar Double Precision Floating-Point Value
+
+================================================================
+
+Smart Pointer
+
+int * ptr;
+
+new : Speicher zu reservieren
+
+delete: Reservierung aufzuheben // freizugeben
+
+================================================================
+
+char * strdup( const char *str1 );          (dynamic memory TR)
+
+void strdup( const char *str1, char* dest, int dest_len );  
+
+
+
+
 

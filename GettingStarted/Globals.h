@@ -20,4 +20,6 @@ extern void main_rule_of_three();
 extern void main_rvalue_lvalue();
 extern void main_move_semantics();
 extern void exercises_move_semantics();
-
+extern void main_lambdas();
+extern void main_brace_initialization();
+extern void main_unique_ptr();
