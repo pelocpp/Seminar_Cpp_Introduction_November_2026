@@ -23,3 +23,5 @@ extern void exercises_move_semantics();
 extern void main_lambdas();
 extern void main_brace_initialization();
 extern void main_unique_ptr();
+extern void main_shared_ptr();
+extern void main_weak_pointer();

@@ -7,6 +7,6 @@
 
 int main()
 {
-	main_unique_ptr();
+	main_weak_pointer();
 	return 0;
 }

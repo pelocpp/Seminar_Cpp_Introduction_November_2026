@@ -39,18 +39,6 @@ Templates:
 
 == Lambdas: Jepp
 
-== Smart Pointer: Shared_Ptr // Weak_Ptr
-
-
-
-== Iteratoren / Geschachtelte Maps / ...
-
-== std::variant // std::any
-
-== Überladen von Operatoren: std::variant
-
-== Preprozessor - Makros // constexpr
-
 == Brace Initialization: Jepp
 
    int i(3);   // alt //
@@ -59,11 +47,26 @@ Templates:
 
    int i{ 3 }; // Neu: Whyyyyyy
 
+==> Hier geht es weiter ...
+
+== Smart Pointer: Shared_Ptr // Weak_Ptr
+
+== std::variant // std::any
+
+== Überladen von Operatoren: std::variant
+
+== Preprozessor - Makros // constexpr
+
+== Iteratoren / Geschachtelte Maps / ...
+
 == Wie liest man einen Core Dump ?????????????
 
    Sanitizer
 
 == std::initializer_list // Wenn die Zeit reicht ...
+
+== Buchhandlung
+
 
 
 // =======================================
@@ -1261,7 +1264,32 @@ char * strdup( const char *str1 );          (dynamic memory TR)
 
 void strdup( const char *str1, char* dest, int dest_len );  
 
+================================================================
 
 
+std::shared_ptr:  Geteilter Besitz.
+
+Any Problem ??????????????????????
+
+Ja, er funktioniert nicht immer ?!?!?!?!?!?!
+
+A) Was ist das Problem ??? Zyklen.
+
+B) Was ist die Lösung des Problems:  std::weak_ptr
+
+
+Observer - Pattern: 
+
+Grob:
+
+Es gibt ein Objekt mit Zustand, der sich ändert: Wetter-Daten // Aktien-Kurse ...
+
+i)    Zustands-Objekt
+
+ii)   Beobachter / Interessierte:  Beobachter kennt Zustands-Objekt
+
+iii)  Beobachter können sich am Zustands-Objekt anmelden (abmelden):
+
+      Das  Zustands-Objekt verwaltet Beobachter.
 
 

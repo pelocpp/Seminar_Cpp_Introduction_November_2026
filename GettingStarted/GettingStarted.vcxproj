@@ -158,6 +158,8 @@
     <ClCompile Include="15_Lambdas.cpp" />
     <ClCompile Include="16_Brace_Initialization.cpp" />
     <ClCompile Include="17_Unique_Ptr.cpp" />
+    <ClCompile Include="18_Shared_Ptr.cpp" />
+    <ClCompile Include="19_Weak_Ptr.cpp" />
     <ClCompile Include="HelloWorld.cpp" />
     <ClCompile Include="01_Pointer_Referenzen.cpp" />
     <ClCompile Include="Program.cpp" />
