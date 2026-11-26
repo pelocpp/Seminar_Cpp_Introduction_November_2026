@@ -151,6 +151,10 @@
     <ClCompile Include="08_auto.cpp" />
     <ClCompile Include="09_auto_als_Parameter.cpp" />
     <ClCompile Include="10_std_array.cpp" />
+    <ClCompile Include="11_Rule_of_Three.cpp" />
+    <ClCompile Include="12_RValue.cpp" />
+    <ClCompile Include="13_MoveSemantics.cpp" />
+    <ClCompile Include="14_MoveSemantics_Example.cpp" />
     <ClCompile Include="HelloWorld.cpp" />
     <ClCompile Include="01_Pointer_Referenzen.cpp" />
     <ClCompile Include="Program.cpp" />

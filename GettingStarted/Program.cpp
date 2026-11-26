@@ -7,6 +7,6 @@
 
 int main()
 {
-	main_array();
+	exercises_move_semantics();
 	return 0;
 }

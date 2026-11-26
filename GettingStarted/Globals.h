@@ -16,3 +16,8 @@ extern void main_algorithms();
 extern void main_auto();
 extern void main_generic_functions();
 extern void main_array();
+extern void main_rule_of_three();
+extern void main_rvalue_lvalue();
+extern void main_move_semantics();
+extern void exercises_move_semantics();
+
