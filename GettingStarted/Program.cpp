@@ -1,4 +1,6 @@
 #include <iostream>
+#include <print>
+
 
 #include "Globals.h"
 
@@ -7,6 +9,7 @@
 
 int main()
 {
-	main_weak_pointer();
+	std::println("Hello Global Buffer Overflow:");
+	main_type_erasure_bookstore();
 	return 0;
 }

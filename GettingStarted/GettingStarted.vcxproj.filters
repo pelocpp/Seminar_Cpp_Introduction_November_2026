@@ -87,6 +87,24 @@
     <ClCompile Include="19_Weak_Ptr.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="20_Std_Any.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="21_Std_Variant.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="22_constexpr.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="23_constexpr_CRC.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="24_explizit.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="25_Bookstore.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h">
@@ -109,5 +127,8 @@
     <Image Include="..\03_Call-by_Referenz.png">
       <Filter>Ressourcendateien</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Readme.md" />
   </ItemGroup>
 </Project>

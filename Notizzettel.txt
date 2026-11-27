@@ -4,6 +4,10 @@ Seminar "C++ Einfühung"
 
 Peter Loos
 
+peter.loos@gmx.de
+
+beeke@wiltfang.de
+
 // =======================================
 
 Unterlagen:
@@ -47,15 +51,15 @@ Templates:
 
    int i{ 3 }; // Neu: Whyyyyyy
 
-==> Hier geht es weiter ...
+== Smart Pointer: Shared_Ptr // Weak_Ptr: Jepp
 
-== Smart Pointer: Shared_Ptr // Weak_Ptr
-
-== std::variant // std::any
+== std::variant // std::any: Jepp
 
 == Überladen von Operatoren: std::variant
 
-== Preprozessor - Makros // constexpr
+== Präprozessor - Makros // constexpr: Jepp
+
+== explicit: Jepp
 
 == Iteratoren / Geschachtelte Maps / ...
 
@@ -65,7 +69,7 @@ Templates:
 
 == std::initializer_list // Wenn die Zeit reicht ...
 
-== Buchhandlung
+== Buchhandlung: Jepp
 
 
 
@@ -98,6 +102,14 @@ b) Programmiersprache: natürliche Sprache:
 	Wie kann man die Grammatik überprüfen:  SW-Tool ( Compiler / Übersetzer )
 
 	Menü "Kompilieren"
+
+b1) Quelltext:   C/C++
+
+#define MaxSize 10
+
+Feature: Textersetzung
+
+Tool: Preprozessor:   REINE TEXTERSETZUNG
 
 
 c) Ein lauffähiges Programm erzeugen.
@@ -1286,10 +1298,158 @@ Es gibt ein Objekt mit Zustand, der sich ändert: Wetter-Daten // Aktien-Kurse .
 
 i)    Zustands-Objekt
 
+      std::shared_ptr
+
 ii)   Beobachter / Interessierte:  Beobachter kennt Zustands-Objekt
+
+      std::shared_ptr
+
 
 iii)  Beobachter können sich am Zustands-Objekt anmelden (abmelden):
 
-      Das  Zustands-Objekt verwaltet Beobachter.
+      Das Zustands-Objekt verwaltet / kennt Beobachter.
+
+	  Wie: std::shared_ptr: Uhhhhhhhhhhhhhhhhhh: Das / Ein Zustands-Objekt besitzt Beobachter.
+
+	  No !!!! Kennen: std::weak ==> lock: nullptr: Damit muss das Zustands-Objekt
+	           umgehen können. // dieser std::weak_ptr sollte aus der Liste entfernt werden
+
+Fazit / Konsequenz:
+-------------------
+
+Smart Pointer:
+
+
+Neues Modul / Abschnitt // Redesign eines bestehenden Moduls (Komplett-Redesign)
+
+==> Smart Pointer
+
+i) Erste Wahl: std::unique_ptr: EIN BESITZER  // aus dem Scope: std::unique_ptr wird zerstört
+
+                                int* ptr;   // einen Besitzer  // delete
+
+ii) Zweite Wahl:
+
+         std::shared_ptr: Ein erster Besitzer legt den ersten std::shared_ptr an.
+
+		 Überlegung: Tut es beim 2. / 3. etc. nicht auch ein std::weak_ptr:
+
+		 a) lock:  NOT nullptr ==> std::shared_ptr ... kurze Zeitdauer verwenden.
+		 b) lock:  nullptr: Frage / Überlegung: Passt das.
+
+Übung:
+------
+
+
+// ==================================================================================
+
+Konzept-Beispiel:
+-----------------
+
+Vererbung:   Polymorphismus.
+
+Prinzip: Vererbung: "Modern"
+
+Alternative zur klassischen Vererbung.
+
+concept  // std::variant ....
+
+====================================================
+
+Ab C++ 17 / 20:
+
+Neues if:   
+
+if compile_time 
+
+====================================================
+
+== Preprozessor - Makros // constexpr
+
+
+        constexpr Complex c3{ c1 + c2 };
+00007FF6B3BD7810  movss       xmm0,dword ptr [__real@40800000 (07FF6B3CB8E4Ch)]  
+00007FF6B3BD7818  movss       dword ptr [c3],xmm0  
+00007FF6B3BD7820  movss       xmm0,dword ptr [__real@40a00000 (07FF6B3CB8E50h)]  
+00007FF6B3BD7828  movss       dword ptr [rbp+8Ch],xmm0  
+
+
+        /*constexpr*/ Complex c3{ c1 + c2 };
+00007FF6E59971FF  lea         r8,[c2]  
+00007FF6E5997203  lea         rdx,[c3]  
+00007FF6E599720A  lea         rcx,[c1]  
+00007FF6E599720E  call        ConstExprClassesAndObjects::Complex::operator+ (07FF6E58FDB2Eh)  
+
+======================================================
+
+https://clang.llvm.org/docs/ConstantInterpreter.html
+
+=====================================================
+
+Container in der STL:   Homogene Container
+
+std::vector<int> zahlen;
+
+Java / C#:              Heterogene Container
+
+Universelle Basisklasse Object:
+
+ArrayList list;
+list.add ("ABC");
+list.add (123);    // Wrapper Klassen:  Integer
+
+Will ich das ?????????????
+
+==============================================
+
+Vererbung:
+-----------
+
+Mögliche Kritikpunkte:
+
+virtual :  Polymorphmismus
+
+https://github.com/pelocpp/cpp_clean_performant_secure/blob/master/Clean_Performant_Code/Clean_Code_Guidelines/Clean_Code_Guidelines_Inheritance.md
+
+Alternative:
+------------
+
+Nicht: Besser
+
+Pro- / Contra-Diskussion
+
+
+Bemerkung: Type Erasure
+
+std::any // std::variant // std::function
+
+
+A) Es ist keine Basisklasse / Basis-Interface notwendig.
+
+B) Methoden im Sinne eines Basis-Interface  werden durch 'concept' bzw. 'requires' beschrieben.
+
+C) Menge aller Objekte: Container von std::variant ===> unterschiedliche Objekte
+
+D) Zugriff auf ein bestimmtes Objekt:  std::visit eines Variant-Objekts
+
+
+=================================================================================
+
+Sanitizer:
+
+
+https://github.com/pelocpp/cpp_clean_performant_secure/blob/master/Clean_Performant_Code/Secure_Programming_Address_Sanitizer/Readme_Address_Sanitizer.md
+
+
+
+
+
+
+
+
+
+
+
+
 
 

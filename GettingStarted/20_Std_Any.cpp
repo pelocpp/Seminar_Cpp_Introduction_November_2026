@@ -1,0 +1,202 @@
+// =====================================================================================
+// Any.cpp // Klasse std::any
+// =====================================================================================
+
+#include <array>
+#include <any>
+#include <map>
+#include <unordered_map>
+#include <vector>
+#include <list>
+#include <print>
+#include <algorithm> 
+#include <string>
+#include <execution>
+#include <span>
+
+namespace {
+
+
+    // helper method (forward declaration)
+    std::string toString(const std::any&);
+
+    void any_frage()
+    {
+        short s1 = 1;
+        short s2 = 2;
+
+        std::any a{ s1 + s2 };
+
+        std::println("Value: {}", toString(a));
+    }
+
+
+    void any_01()
+    {
+        std::any a{ 1 };
+
+        {
+            const std::string& type{ a.type().name() };
+            auto value{ std::any_cast<int>(a) };
+            std::println("Value: {} / Type: {}", value, type);
+        }
+
+        a = 3.14;
+
+        {
+            const std::string& type{ a.type().name() };
+            auto value{ std::any_cast<double>(a) };
+            std::println("Value: {} / Type: {}", value, type);
+        }
+
+
+        a = true;
+
+        {
+            const std::string& type{ a.type().name() };
+            auto value{ std::any_cast<bool>(a) };
+            std::println("Value: {} / Type: {}", value, type);
+        }
+
+        // bad cast
+        try
+        {
+            a = 1;
+            auto value{ std::any_cast<float>(a) };
+        }
+        catch (const std::bad_any_cast& e)
+        {
+            std::println("{}", e.what());
+        }
+
+        // has value
+        a = 1;
+
+        if (a.has_value())
+        {
+            const std::string& type{ a.type().name() };
+            auto value{ std::any_cast<int>(a) };
+            std::println("Value: {} / Type: {}", value, type);
+        }
+
+        // reset
+        a.reset();
+
+        if (!a.has_value())
+        {
+            std::println("No value!");
+        }
+
+        // pointer to contained data
+        a = 1;
+        int* i = std::any_cast<int>(&a);
+        std::println("{}", *i);
+    }
+
+    void any_02()
+    {
+        std::any a1{ std::make_any<std::string>("Hello, std::any!") };
+        std::any a2{ std::make_any<double>(123.456) };
+
+        std::println("{}", std::any_cast<std::string&>(a1));
+        std::println("{}", std::any_cast<double&>(a2));
+    }
+
+    using Row = std::tuple<std::any, std::any, std::any>;
+
+    void any_03()
+    {
+        Row row1{ 1, 2, 3 };
+        Row row2{ '1',  std::string{ "ABC" }, 99.99 };
+        Row row3{ true, 123, false };
+
+        std::vector<Row> mySheet{};
+
+        // note: conversion to base class 'std::tuple<std::any, std::any, std::any>'
+        mySheet.push_back(row1);
+        mySheet.push_back(row2);
+        mySheet.push_back(row3);
+
+        for (const auto& [val1, val2, val3] : mySheet) {
+
+            std::println("Value1: {}", toString(val1));
+            std::println("Value2: {}", toString(val2));
+            std::println("Value3: {}", toString(val3));
+        }
+    }
+
+    // RTTI
+    std::string toString(const std::any& var)
+    {
+        if (var.type() == typeid (short)) {
+            std::println("short .... ");
+            return std::to_string(std::any_cast<short>(var));
+        }
+        if (var.type() == typeid (int)) {
+            std::println("int .... ");
+            return std::to_string(std::any_cast<int>(var));
+        }
+        else if (var.type() == typeid (double)) {
+            return std::to_string(std::any_cast<double>(var));
+        }
+        else if (var.type() == typeid (bool)) {
+            return std::to_string(std::any_cast<bool>(var));
+        }
+        else if (var.type() == typeid (char)) {
+            return std::to_string(std::any_cast<char>(var));
+        }
+        else if (var.type() == typeid (std::string)) {
+            return std::any_cast<std::string>(var);
+        }
+        else {
+            return std::string("<Unknown>");
+        }
+    }
+
+    void any_04() {
+
+        // array with three instances of std::any (note: brace elision)
+        const std::array<std::any, 3> many
+        {
+            std::any{ 42 },                   // int
+            std::any{ 1.23 },                 // double
+            std::any{ std::string{ "Hello" } }  // std::string
+        };
+
+        // use random access on the container elements.
+        auto n{ std::any_cast<int>(many[0]) };
+        auto f{ std::any_cast<double>(many[1]) };
+        auto s{ std::any_cast<std::string>(many[2]) };
+
+        // query the container size
+        const std::size_t size = many.size();
+
+        // iterate container with an algorithm and execute a member function
+        bool hasValues{ std::all_of(
+            many.cbegin(),
+            many.cend(),
+            [](const auto& a) -> bool {
+                return a.has_value();
+            }
+        ) };
+
+        if (hasValues) {
+            std::println("All std::any objects contain a value.");
+        }
+    }
+}
+
+void main_any()
+{
+    any_frage();
+    return;
+    any_01();
+    any_02();
+    any_03();
+    any_04();
+}
+
+// =====================================================================================
+// End-of-File
+// =====================================================================================
+

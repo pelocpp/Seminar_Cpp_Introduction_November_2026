@@ -25,3 +25,8 @@ extern void main_brace_initialization();
 extern void main_unique_ptr();
 extern void main_shared_ptr();
 extern void main_weak_pointer();
+extern void main_variant();
+extern void main_any();
+extern void main_constexpr();
+extern void main_explicit_keyword();
+extern void main_type_erasure_bookstore();
