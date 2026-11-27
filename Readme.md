@@ -1,3 +1,3 @@
 # Seminar C++
 
-Zum Notizzettelm geht es [hier](Notizzettel.txt).
+Zum Notizzettel geht es [hier](Notizzettel.txt).
